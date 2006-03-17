@@ -12,14 +12,32 @@ BEGIN { use_ok("Religion::Bible::Reference"); }
 		"Jn 1:10-11,20-21,23 stringification"
 	);
 
-  my $iterator = $bibref->iterator;
+  { # iterate scalarly
+    my $iterator = $bibref->iterator;
 
-  isa_ok($iterator, 'Religion::Bible::Reference::Iterator', '->iterator');
+    isa_ok($iterator, 'Religion::Bible::Reference::Iterator', '->iterator');
 
-  my @verses = (10, 11, 20, 21, 23);
+    my @verses = (10, 11, 20, 21, 23);
 
-  while (my $verse = $iterator->next) {
-    is($verse, (shift @verses), "iterator result");
+    while (my $verse = $iterator->next) {
+      is($verse, (shift @verses), "iterator result scalar context");
+    }
+  }
+
+  { # iterate listwise
+    my $iterator = $bibref->iterator;
+
+    isa_ok($iterator, 'Religion::Bible::Reference::Iterator', '->iterator');
+
+    my @verses = (10, 11, 20, 21, 23);
+
+    while (my @verse = $iterator->next) {
+      is_deeply(
+        \@verse,
+        [ 'John', 1, (shift @verses) ],
+        "iterator result list context"
+      );
+    }
   }
 
 	is(
