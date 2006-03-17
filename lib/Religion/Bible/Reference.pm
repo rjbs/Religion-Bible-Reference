@@ -250,11 +250,16 @@ package Religion::Bible::Reference::Iterator;
 
 sub next {
   my ($self) = @_;
-  $self->{position} ||= $self->{ranges}[0];
+  return unless @{ $self->{ranges} };
+
+  $self->{position} ||= $self->{ranges}[0][0];
   my $position = $self->{position};
-  if ($position == $self->{ranges}[1]) {
+
+  if ($position == $self->{ranges}[0][1]) {
     shift @{ $self->{ranges} };
     undef $self->{position};
+  } else {
+    $self->{position}++;
   }
   return wantarray ? (@$self{qw(book chapter)}, $position) : $position;
 }

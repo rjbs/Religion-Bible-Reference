@@ -1,10 +1,11 @@
 Changes
 MANIFEST
-META.yml # Will be created by "make dist"
 Makefile.PL
 README
 lib/Religion/Bible/Reference.pm
 lib/Religion/Bible/Reference/Standard.pm
 t/00.load.t
+t/basic.t
+t/iterator.t
 t/pod-coverage.t
 t/pod.t
