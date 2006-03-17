@@ -76,7 +76,7 @@ This method acts just like the exported C<bibref> function.
 # jn8:25-28,30-32
 # jn8:1,3-4,6
 
-sub parse_ref {
+sub _parse_ref {
   my ($class, $ref_string) = @_;
   my $range_regex  = qr/\d+(?::(?:\d[-,]?)+)?/;
 
@@ -88,18 +88,18 @@ sub parse_ref {
 sub new {
   my ($class, $ref_string) = @_;
 
-  my %bibref = $class->parse_ref($ref_string);
+  my %bibref = $class->_parse_ref($ref_string);
 
   my $self;
 
   return unless $self->{book}  = $class->canonicalize_book($bibref{book});
 
-  return unless my $range = $class->parse_ranges($bibref{ranges});
+  return unless my $range = $class->_parse_ranges($bibref{ranges});
 
   $self->{chapter} = $range->{chapter};
   $self->{ranges}  = $range->{ranges};
 
-  return unless $class->validate_ranges(
+  return unless $class->_validate_ranges(
     $self->{book},
     $self->{chapter},
     $self->{ranges},
@@ -108,7 +108,7 @@ sub new {
   bless $self => $class;
 }
 
-sub validate_ranges {
+sub _validate_ranges {
   my ($class, $book, $chapter, $ranges) = @_;
 
   foreach my $range (@$ranges) {
@@ -118,7 +118,7 @@ sub validate_ranges {
   return 1;
 }
 
-sub parse_ranges {
+sub _parse_ranges {
   my ($self, $string) = @_;
 
   my ($chapter, $rest) = $string =~ /\A(\d+)(?::(.+))?\z/;
