@@ -11,14 +11,6 @@ BEGIN { use_ok("Religion::Bible::Reference"); }
 
 	is($bibref->{book}, "John", "jn8:32 book");
 
-	is_deeply(
-		$bibref->{ranges},
-		[{
-			begin_chapter => 8,     begin_verse => 32,
-		}],
-		"correct ranges"
-	);
-
 	is(
 		$bibref->stringify,
 		"John 8:32",
@@ -46,6 +38,7 @@ BEGIN { use_ok("Religion::Bible::Reference"); }
 
 {
 	my $bibref = bibref("1Kgs 1:2-3,5");
+
 	is(
 		$bibref->stringify,
 		"1 Kings 1:2-3, 5",
@@ -57,7 +50,7 @@ BEGIN { use_ok("Religion::Bible::Reference"); }
 	my $bibref = bibref("Jn 1:10-11,20-21,23");
 	is(
 		$bibref->stringify,
-		"John 1:10-11, 20:21, 23",
+		"John 1:10-11, 20-21, 23",
 		"Jn 1:10-11,20-21,23 stringification"
 	);
 }
