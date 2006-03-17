@@ -9,7 +9,9 @@ WriteMakefile(
     ABSTRACT_FROM       => 'lib/Religion/Bible/Reference.pm',
     PL_FILES            => {},
     PREREQ_PM => {
-        'Test::More' => 0,
+        'Class::Accessor' => 0,
+        'Sub::Exporter'   => 0.90,
+        'Test::More'      => 0,
     },
     dist                => { COMPRESS => 'gzip -9f', SUFFIX => 'gz', },
     clean               => { FILES => 'Religion-Bible-Reference-* cover_db' },
