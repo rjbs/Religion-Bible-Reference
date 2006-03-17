@@ -42,6 +42,10 @@ our $VERSION = '0.01';
 This module converts simple text descriptions of bible references and ranges
 into objects that stringify into a canonical form.
 
+B<WARNING!>  This module is mostly an idea and not so much a guaranteed
+interface or well-tested implementation.  If you're interested in either of
+those existing, you should let me know.
+
 =head1 FUNCTIONS
 
 =head2 bibref($ref_string)
