@@ -7,6 +7,7 @@ WriteMakefile(
     AUTHOR              => 'Ricardo Signes <rjbs@cpan.org>',
     VERSION_FROM        => 'lib/Religion/Bible/Reference.pm',
     ABSTRACT_FROM       => 'lib/Religion/Bible/Reference.pm',
+    LICENSE             => 'perl',
     PL_FILES            => {},
     PREREQ_PM => {
         'Class::Accessor' => 0,
