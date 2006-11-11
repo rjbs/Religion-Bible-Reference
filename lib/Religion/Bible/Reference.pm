@@ -252,7 +252,7 @@ sub iterator {
 
 package Religion::Bible::Reference::Iterator;
 
-sub next {
+sub next { ## no critic # honestly, next is a great method for an iterator
   my ($self) = @_;
   return unless @{ $self->{ranges} };
 
