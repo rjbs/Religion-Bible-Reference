@@ -20,13 +20,13 @@ Religion::Bible::Reference - canonicalize shorthand bible references
 
 =head1 VERSION
 
-version 0.01
+version 0.011
 
  $Id$
 
 =cut
 
-our $VERSION = '0.01';
+our $VERSION = '0.011';
 
 =head1 SYNOPSIS
 
@@ -86,6 +86,7 @@ sub _parse_ref {
 
   (my $book  = $ref_string) =~ s/\s*($range_regex)\z//;
   my $ranges = $1;
+
   return (book => $book, ranges => $ranges);
 }
 
@@ -153,7 +154,7 @@ book name.
 sub stringify {
   my ($self) = @_;
   my $string = $self->{book}
-             . ' '
+             . q{ }
              . $self->{chapter};
 
   return unless @{ $self->{ranges} };
