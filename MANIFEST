@@ -7,7 +7,7 @@ lib/Religion/Bible/Reference/Standard.pm
 t/00-load.t
 t/basic.t
 t/iterator.t
-t/pod-coverage.t
-t/pod.t
-t/perl-critic.t
+xt/release/pod-coverage.t
+xt/release/pod.t
+xt/release/perl-critic.t
 LICENSE
