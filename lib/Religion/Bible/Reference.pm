@@ -1,7 +1,6 @@
-package Religion::Bible::Reference;
-
 use warnings;
 use strict;
+package Religion::Bible::Reference;
 
 use Sub::Exporter -setup => {
   exports => [ qw(bibref) ],
@@ -20,13 +19,11 @@ Religion::Bible::Reference - canonicalize shorthand bible references
 
 =head1 VERSION
 
-version 0.011
-
- $Id$
+version 0.012
 
 =cut
 
-our $VERSION = '0.011';
+our $VERSION = '0.012';
 
 =head1 SYNOPSIS
 
@@ -289,8 +286,7 @@ Ricardo Signes, C<< <rjbs@cpan.org> >>
 
 =head1 BUGS
 
-Please report any bugs or feature requests to
-C<bug-religion-bible-reference@rt.cpan.org>, or through the web interface at
+Please report any bugs or feature requests through the web interface at
 L<http://rt.cpan.org>.  I will be notified, and then you'll automatically be
 notified of progress on your bug as I make changes.
 

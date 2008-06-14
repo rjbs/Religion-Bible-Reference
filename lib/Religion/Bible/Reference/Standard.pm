@@ -1,7 +1,6 @@
-package Religion::Bible::Reference::Standard;
-
 use warnings;
 use strict;
+package Religion::Bible::Reference::Standard;
 
 =head1 NAME
 
@@ -9,13 +8,11 @@ Religion::Bible::Reference::Standard - standard bible books and abbreviations
 
 =head1 VERSION
 
-version 0.00_03
-
- $Id$
+version 0.012
 
 =cut
 
-our $VERSION = '0.00_03';
+our $VERSION = '0.012';
 
 =head1 DESCRIPTION
 
@@ -31,7 +28,7 @@ my %chapters = (
   )],
   'Exodus'  => [ qw( 
     22 25 22 31 23 30 25 32 35 29 10 51 22 31 27 36 16 27 25 26
-    36 31 33 18 40 37 21 43 46 38 18 35 23 35 08 38 29 31 43 38
+    36 31 33 18 40 37 21 43 46 38 18 35 23 35 35 38 29 31 43 38
   )],
 
   'Leviticus' => [ qw( 
@@ -54,8 +51,8 @@ my %chapters = (
   )],
   'Ruth'    => [ qw( 22 23 18 22 )],
   '1 Samuel' => [ qw(
-    28 36 21 22 12 21 17 21 27 27 15 25 23 52 35 23
-    58 30 24 42 15 23 29 22 44 25 12 24 11 31 13
+    28 36 21 22 12 21 17 22 27 27 15 25 23 52 35 23
+    58 30 24 42 15 23 29 22 44 25 12 25 11 31 13
   )],
   '2 Samuel' => [ qw(
     27 32 39 12 25 23 29 18 13 19 27 31 39 33 37 23 29 33 43 26 22 51 39 25 
@@ -86,7 +83,7 @@ my %chapters = (
     12 14 09 11 12 24 11 22 22 28 12 40 22 13 17 13 11 05 26 17 11 09 14 20 23
     19 09 06 07 23 13 11 11 17 12 08 12 11 10 13 20 07 35 36 05 24 20 28 23 10
     12 20 72 13 19 16 08 18 12 13 17 07 18 52 17 16 15 05 23 11 13 12 09 09 05
-    08 28 22 35 45 48 13 31 13 07 10 10 09 08 18 19 02 29   176 07 08 09 04 08
+    08 28 22 35 45 48 43 31 31 07 10 10 09 08 18 19 02 29   176 07 08 09 04 08
     05 06 05 06 08 08 03 18 03 03 21 26 09 08 24 13 10 07 12 15 21 10 20 14 09
     06
   )],
@@ -122,7 +119,7 @@ my %chapters = (
   'Habakkuk'  => [ qw( 17 20 19 )],
   'Zephaniah' => [ qw( 18 15 20 )],
   'Haggai'    => [ qw( 15 23 )],
-  'Zechariah' => [ qw( 21 13 10 14 11 15 14 23 12 17 14 09 21 )],
+  'Zechariah' => [ qw( 21 13 10 14 11 15 14 23 17 12 17 14 09 21 )],
   'Malachi'   => [ qw( 14 17 18 06 )],
   # New Testament
   'Matthew' => [ qw(
@@ -139,11 +136,11 @@ my %chapters = (
   )],
   'Acts'    => [ qw(
     26 47 26 37 42 15 60 40 43 48 30 25 52 28
-    40 40 34 28 40 38 40 30 35 27 27 32 44 31
+    41 40 34 28 41 38 40 30 35 27 27 32 44 31
   )],
   'Romans'  => [ qw(32 29 31 25 21 23 25 39 33 21 36 21 14 23 33 27)],
   '1 Corinthians' => [ qw(31 16 23 21 13 20 40 13 27 33 34 31 13 40 58 24) ],
-  '2 Corinthians' => [ qw(24 17 18 18 21 18 16 24 15 18 33 21 13) ],
+  '2 Corinthians' => [ qw(24 17 18 18 21 18 16 24 15 18 33 21 14) ],
   'Galatians'     => [ qw(24 21 29 31 26 18) ],
   'Ephesians'     => [ qw(23 22 21 32 33 24) ],
   'Philippians'   => [ qw(30 30 21 23) ],
@@ -245,8 +242,7 @@ Ricardo Signes, C<< <rjbs@cpan.org> >>
 
 =head1 BUGS
 
-Please report any bugs or feature requests to
-C<bug-religion-bible-reference@rt.cpan.org>, or through the web interface at
+Please report any bugs or feature requests through the web interface at
 L<http://rt.cpan.org>.  I will be notified, and then you'll automatically be
 notified of progress on your bug as I make changes.
 
