@@ -1,5 +1,8 @@
 Revision history for Religion-Bible-Reference
 
+0.013   2008-08-09
+        added stringify_short (suggested by Rohan Carly)
+ 
 0.012   2008-06-14
         correct chapter/verse counts in Ex, 1Sam, Zec, Ps, Acts, 2Cor
         (thanks to Joshua Barratt for noticing and (!) patching)

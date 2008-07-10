@@ -19,11 +19,11 @@ Religion::Bible::Reference - canonicalize shorthand bible references
 
 =head1 VERSION
 
-version 0.012
+version 0.013
 
 =cut
 
-our $VERSION = '0.012';
+our $VERSION = '0.013';
 
 =head1 SYNOPSIS
 
@@ -169,12 +169,38 @@ sub _stringify_range {
 
 my %book_chapters;
 my %book_abbrev;
+my %book_short;
 
 sub _register_book_set {
   my ($class, $package) = @_;
   my $standard = $package->_books;
   %book_chapters = (%book_chapters, %{$standard->{chapters}});
   %book_abbrev   = (%book_abbrev,   %{$standard->{abbrev}});
+  %book_short    = (%book_short,    %{$standard->{short_form}});
+}
+
+=head2 $self->stringify_short
+
+This method returns a string representing the reference, using the short book
+name.
+
+In other words, John 8:32 would be Jn 8:32.  All short forms should safely
+round-trip back via parsing.
+
+=cut
+
+sub stringify_short {
+  my ($self) = @_;
+
+  my $string = $book_short{ $self->{book} }
+             . q{ }
+             . $self->{chapter};
+
+  return unless @{ $self->{ranges} };
+
+  $string .= 
+    ':' . join(', ', map { $self->_stringify_range($_) } @{ $self->{ranges} })
+  ;
 }
 
 __PACKAGE__->_register_book_set("Religion::Bible::Reference::Standard");
@@ -205,8 +231,6 @@ sub canonicalize_book {
   }
   return;
 }
-
-
 
 =head2 C< validate_verse >
 

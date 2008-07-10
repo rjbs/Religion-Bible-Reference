@@ -1,4 +1,4 @@
-use Test::More 'no_plan';
+use Test::More tests => 11;
 use strict;
 use warnings;
 
@@ -16,6 +16,12 @@ BEGIN { use_ok("Religion::Bible::Reference"); }
 		"John 8:32",
 		"jn8:32 stringification"
 	);
+
+  is(
+    $bibref->stringify_short,
+    'Jn 8:32',
+    'short stringification works',
+  );
 }
 
 {
