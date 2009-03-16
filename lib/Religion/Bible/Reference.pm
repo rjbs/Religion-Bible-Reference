@@ -7,9 +7,15 @@ use Sub::Exporter -setup => {
   groups  => { default => [ qw(bibref) ] },
 };
 
-use base qw(Class::Accessor);
-
-__PACKAGE__->mk_accessors(qw(book chapter ranges));
+BEGIN {
+  for my $attr (qw(book chapter ranges)) {
+    no strict 'refs';
+    *$attr = sub {
+      return $_[0]->{$attr} if @_ == 1;
+      return $_[0]->{$attr} = $_[1];
+    };
+  }
+}
 
 use Religion::Bible::Reference::Standard;
 

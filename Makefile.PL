@@ -10,9 +10,8 @@ WriteMakefile(
     LICENSE             => 'perl',
     PL_FILES            => {},
     PREREQ_PM => {
-        'Class::Accessor' => 0,
-        'Sub::Exporter'   => 0.90,
-        'Test::More'      => 0,
+      'Sub::Exporter'   => 0.90,
+      'Test::More'      => 0,
     },
     (eval { ExtUtils::MakeMaker->VERSION(6.46) }
       ? (META_MERGE => {

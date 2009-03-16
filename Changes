@@ -4,6 +4,8 @@ Revision history for Religion-Bible-Reference
         simplify the data structure storing book definitions (partial patch by
         Otto Hirr)
 
+        remove prereq on Class::Accessor
+
 0.013   2008-08-09
         added stringify_short (suggested by Rohan Carly)
  
