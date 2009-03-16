@@ -177,8 +177,8 @@ sub _register_book_set {
   my @books = $package->_books;
   for my $book (@books) {
     my $full = $book->{full};
-    $book_chapters{ $full } = $book->{chvr};
-    $book_abbrev  { $full } = $book->{abbrv};
+    $book_chapters{ $full } = $book->{verses};
+    $book_abbrev  { $full } = $book->{abbreviations};
     $book_short   { $full } = $book->{short};
   }
 }

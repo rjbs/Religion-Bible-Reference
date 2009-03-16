@@ -1,5 +1,9 @@
 Revision history for Religion-Bible-Reference
 
+0.014   2009-03-16
+        simplify the data structure storing book definitions (partial patch by
+        Otto Hirr)
+
 0.013   2008-08-09
         added stringify_short (suggested by Rohan Carly)
  
