@@ -173,10 +173,17 @@ my %book_short;
 
 sub _register_book_set {
   my ($class, $package) = @_;
-  my $standard = $package->_books;
-  %book_chapters = (%book_chapters, %{$standard->{chapters}});
-  %book_abbrev   = (%book_abbrev,   %{$standard->{abbrev}});
-  %book_short    = (%book_short,    %{$standard->{short_form}});
+
+  my @books = $package->_books;
+  for my $book (@books) {
+    my $full = $book->{full};
+    $book_chapters{ $full } = $book->{chvr};
+    $book_abbrev  { $full } = $book->{abbvr};
+    $book_short   { $full } = $book->{short};
+  }
+
+  use YAML::XS ();
+  die YAML::XS::Dump(\%book_chapters);
 }
 
 =head2 $self->stringify_short
