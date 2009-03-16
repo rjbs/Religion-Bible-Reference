@@ -1,6 +1,7 @@
 use strict;
 use warnings;
 use ExtUtils::MakeMaker;
+eval { require ExtUtils::MakeMaker::JSONMETA; };
 
 WriteMakefile(
     NAME                => 'Religion::Bible::Reference',
