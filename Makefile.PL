@@ -14,6 +14,14 @@ WriteMakefile(
         'Sub::Exporter'   => 0.90,
         'Test::More'      => 0,
     },
+    (eval { ExtUtils::MakeMaker->VERSION(6.46) }
+      ? (META_MERGE => {
+          resources => {
+            Repository => 'http://github.com/rjbs/religion-bible-reference'
+          }
+        })
+      : ()
+    ),
     dist                => { COMPRESS => 'gzip -9f', SUFFIX => 'gz', },
     clean               => { FILES => 'Religion-Bible-Reference-* cover_db' },
 );
