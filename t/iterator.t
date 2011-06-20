@@ -47,3 +47,12 @@ BEGIN { use_ok("Religion::Bible::Reference"); }
 	);
 }
 
+{
+    my $bibref = bibref("Jn 1");
+    my $iterator = $bibref->iterator;
+    isa_ok($iterator, 'Religion::Bible::Reference::Iterator', '->iterator');
+
+    my $count; $count++ while $iterator->next;
+    is($count, 51, "Iterating whole chapters works");
+}
+
