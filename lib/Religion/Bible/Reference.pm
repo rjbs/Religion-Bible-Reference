@@ -7,6 +7,10 @@ use Sub::Exporter -setup => {
   groups  => { default => [ qw(bibref) ] },
 };
 
+my %book_chapters;
+my %book_abbrev;
+my %book_short;
+
 BEGIN {
   for my $attr (qw(book chapter ranges)) {
     no strict 'refs';
@@ -102,7 +106,9 @@ sub new {
 
   return unless $self->{book}  = $class->canonicalize_book($bibref{book});
 
-  return unless my $range = $class->_parse_ranges($bibref{ranges});
+  bless $self => $class;
+
+  return unless my $range = $self->_parse_ranges($bibref{ranges});
 
   $self->{chapter} = $range->{chapter};
   $self->{ranges}  = $range->{ranges};
@@ -113,7 +119,7 @@ sub new {
     $self->{ranges},
   );
 
-  bless $self => $class;
+  return $self;
 }
 
 sub _validate_ranges {
@@ -132,7 +138,9 @@ sub _parse_ranges {
   my ($chapter, $rest) = $string =~ /\A(\d+)(?::(.+))?\z/;
 
   return unless $chapter;
-  return { chapter => $string } unless $rest;
+  return { chapter => $string,
+           ranges => [[ 1, $book_chapters{$self->{book}}[$chapter - 1] ]] } 
+           unless $rest;
 
   my @range_strings = split /,\s?/, $rest;
 
@@ -172,10 +180,6 @@ sub _stringify_range {
 
   map { $_->[0] == $_->[1] ? $_->[0] : "$_->[0]-$_->[1]" } $range
 }
-
-my %book_chapters;
-my %book_abbrev;
-my %book_short;
 
 sub _register_book_set {
   my ($class, $package) = @_;
