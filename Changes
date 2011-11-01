@@ -1,5 +1,8 @@
 Revision history for Religion-Bible-Reference
 
+0.015   2011-10-31
+        allow iteration of complete chapters ("Jn 1") -- Thanks, Simon Cozens!
+
 0.014   2009-03-16
         simplify the data structure storing book definitions (partial patch by
         Otto Hirr)
@@ -8,7 +11,7 @@ Revision history for Religion-Bible-Reference
 
 0.013   2008-08-09
         added stringify_short (suggested by Rohan Carly)
- 
+
 0.012   2008-06-14
         correct chapter/verse counts in Ex, 1Sam, Zec, Ps, Acts, 2Cor
         (thanks to Joshua Barratt for noticing and (!) patching)
