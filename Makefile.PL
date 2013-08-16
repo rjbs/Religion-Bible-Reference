@@ -17,7 +17,7 @@ WriteMakefile(
     (eval { ExtUtils::MakeMaker->VERSION(6.46) }
       ? (META_MERGE => {
           resources => {
-            Repository => 'http://github.com/rjbs/religion-bible-reference'
+            repository => 'http://github.com/rjbs/religion-bible-reference'
           }
         })
       : ()
