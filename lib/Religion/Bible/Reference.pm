@@ -1,6 +1,7 @@
 use warnings;
 use strict;
 package Religion::Bible::Reference;
+# ABSTRACT: canonicalize shorthand bible references
 
 use Sub::Exporter -setup => {
   exports => [ qw(bibref) ],
@@ -23,18 +24,6 @@ BEGIN {
 
 use Religion::Bible::Reference::Standard;
 
-=head1 NAME
-
-Religion::Bible::Reference - canonicalize shorthand bible references
-
-=head1 VERSION
-
-version 0.014
-
-=cut
-
-our $VERSION = '0.014';
-
 =head1 SYNOPSIS
 
  use Religion::Bible::Reference;
@@ -53,9 +42,9 @@ B<WARNING!>  This module is mostly an idea and not so much a guaranteed
 interface or well-tested implementation.  If you're interested in either of
 those existing, you should let me know.
 
-=head1 FUNCTIONS
+=func bibref
 
-=head2 bibref($ref_string)
+  my $ref = bibref($ref_string)
 
 This function is exported by default, and constructs a new
 Religion::Bible::Reference
@@ -72,9 +61,9 @@ ranges.  The following are all valid ranges:
 
 sub bibref { __PACKAGE__->new(@_); }
 
-=head1 METHODS
+=method new
 
-=head2 Religion::Bible::Reference->new($ref_string)
+  my $ref = Religion::Bible::Reference->new($ref_string)
 
 This method acts just like the exported C<bibref> function.
 
@@ -139,13 +128,13 @@ sub _parse_ranges {
 
   return unless $chapter;
   return { chapter => $string,
-           ranges => [[ 1, $book_chapters{$self->{book}}[$chapter - 1] ]] } 
+           ranges => [[ 1, $book_chapters{$self->{book}}[$chapter - 1] ]] }
            unless $rest;
 
   my @range_strings = split /,\s?/, $rest;
 
   my @range;
-  
+
   for my $rs (@range_strings) {
     my ($start, $end) = $rs =~ /\A(\d+)(?:-(\d+))?\z/;
     return unless $start;
@@ -155,7 +144,9 @@ sub _parse_ranges {
   return { chapter => $chapter, ranges => \@range };
 }
 
-=head2 $self->stringify
+=method stringify
+
+  $self->stringify
 
 This method returns a string representing the reference, using the canonical
 book name.
@@ -170,7 +161,7 @@ sub stringify {
 
   return unless @{ $self->{ranges} };
 
-  $string .= 
+  $string .=
     ':' . join(', ', map { $self->_stringify_range($_) } @{ $self->{ranges} })
   ;
 }
@@ -193,7 +184,9 @@ sub _register_book_set {
   }
 }
 
-=head2 $self->stringify_short
+=method stringify_short
+
+  my $str = $self->stringify_short
 
 This method returns a string representing the reference, using the short book
 name.
@@ -212,14 +205,16 @@ sub stringify_short {
 
   return unless @{ $self->{ranges} };
 
-  $string .= 
+  $string .=
     ':' . join(', ', map { $self->_stringify_range($_) } @{ $self->{ranges} })
   ;
 }
 
 __PACKAGE__->_register_book_set("Religion::Bible::Reference::Standard");
 
-=head2 $class->canonicalize_book($book_abbrev)
+=method canonicalize_book
+
+  my $book = $class->canonicalize_book($book_abbrev)
 
 If possible, this method returns the canonical name of the book whose
 abbreviation was passed.
@@ -246,7 +241,7 @@ sub canonicalize_book {
   return;
 }
 
-=head2 C< validate_verse >
+=method validate_verse
 
   $class->validate_verse($book, $chapter, $verse)
 
@@ -263,7 +258,7 @@ sub validate_verse {
   return 1
 }
 
-=head2 C< iterator >
+=method iterator
 
   my $iterator = $bibref->iterator;
 
@@ -304,36 +299,13 @@ sub next { ## no critic # honestly, next is a great method for an iterator
   return wantarray ? (@$self{qw(book chapter)}, $position) : $position;
 }
 
-=head1 AUTHOR
-
-Ricardo Signes, C<< <rjbs@cpan.org> >>
-
 =head1 TODO
 
-=over 4
-
-=item * allow Text::Abbrev instead of registered abbrevs
-
-=item * clean up regex/lists
-
-=item * make public the interface to load modules of books and abbreviations
-
-=item * make an interface to unload modules
-
-=back
-
-=head1 BUGS
-
-Please report any bugs or feature requests through the web interface at
-L<http://rt.cpan.org>.  I will be notified, and then you'll automatically be
-notified of progress on your bug as I make changes.
-
-=head1 COPYRIGHT
-
-Copyright 2005-2006 Ricardo Signes, All Rights Reserved.
-
-This program is free software; you can redistribute it and/or modify it
-under the same terms as Perl itself.
+=for :list
+* allow L<Text::Abbrev> instead of registered abbrevs
+* clean up regex/lists
+* make public the interface to load modules of books and abbreviations
+* make an interface to unload modules
 
 =cut
 
