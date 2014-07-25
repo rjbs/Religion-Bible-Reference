@@ -375,7 +375,7 @@ my @books = (
   'James' => {
     short => 'Jas',
     abbreviations => [ 'jas' ],
-    verses  => [ qw(27 26 18 17 30) ],
+    verses  => [ qw(27 26 18 17 20) ],
   },
   '1 Peter' => {
     short => '1 Pe',
