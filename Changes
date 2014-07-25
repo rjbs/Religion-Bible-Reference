@@ -2,6 +2,10 @@ Revision history for Religion-Bible-Reference
 
 {{$NEXT}}
 
+0.016     2014-07-25 18:31:30-04:00 America/New_York
+        - correct the number of verses in James 5
+          (thanks, Héctor Daniel Cortés González)
+
 0.015     2013-10-15 21:59:34 America/New_York
           update changelog and repo
 
